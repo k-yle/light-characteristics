@@ -1,0 +1,51 @@
+{
+  "name": "light-characteristics",
+  "version": "1.0.0",
+  "contributors": [
+    "Kyle Hensel (https://github.com/k-yle)"
+  ],
+  "description": "🛥️🔦 A parser for light characteristics used on nautical charts",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "light",
+    "lights",
+    "light characteristics",
+    "s57",
+    "seamark",
+    "nautical"
+  ],
+  "repository": "https://github.com/k-yle/light-characteristics",
+  "scripts": {
+    "build": "rm -rf dist && tsc --emitDeclarationOnly && rm -rf dist/__tests__ && esbuild ./src --bundle --minify --sourcemap --format=esm --outfile=dist/index.js",
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "vitest",
+    "trypublish": "npm publish || true"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.5",
+    "eslint": "^8.52.0",
+    "eslint-config-kyle": "^16.0.1",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
+  },
+  "eslintConfig": {
+    "extends": "kyle",
+    "settings": {
+      "jest": {
+        "version": 29
+      }
+    }
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}
