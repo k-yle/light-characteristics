@@ -6,7 +6,7 @@
 [![npm](https://img.shields.io/npm/dt/light-characteristics.svg)](https://www.npmjs.com/package/light-characteristics)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/light-characteristics)
 
-📅🔒 A JavaScript library to encode and decode light codes used on nautical charts.
+🛥️🔦 A JavaScript library to encode and decode [light characteristics](https://en.wikipedia.org/wiki/Light_characteristic) used on [nautical charts](https://en.wikipedia.org/wiki/Nautical_chart).
 
 ## Install
 
