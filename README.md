@@ -30,3 +30,7 @@ const encoded = encodeLight({
 });
 encoded; // -> 'AeroF.RY.5m'
 ```
+
+## Try it out
+
+This repository also contains an editor UI, which is [available online](https://kyle.kiwi/light-characteristics).
