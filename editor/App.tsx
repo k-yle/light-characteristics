@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Alert,
   Button,
@@ -7,19 +7,20 @@ import {
   createTheme,
 } from '@mui/material';
 import {
-  Light,
   decodeLight as unsafeDecodeLight,
   encodeLight,
 } from 'light-characteristics';
 import { LightEditor } from './LightEditor';
 
-const inititalState: Light = {
+const defaultState = encodeLight({
   COLOUR: ['R', 'Y'],
   LITCHR: 'LFl',
   CATLIT: 'front',
   SIGPER: 5,
   VALMXR: 1,
-};
+});
+
+const inititalState = window.location.hash.slice(1) || defaultState;
 
 /** the original function could throw an error */
 const decodeLight = (string: string) => {
@@ -38,8 +39,12 @@ const theme = createTheme(
 );
 
 export const App: React.FC = () => {
-  const [text, setText] = useState(encodeLight(inititalState));
-  const [light, setLight] = useState<Light | undefined>(inititalState);
+  const [text, setText] = useState(inititalState);
+  const [light, setLight] = useState(decodeLight(inititalState));
+
+  useEffect(() => {
+    window.history.replaceState(null, '', `#${text}`);
+  }, [text]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -75,8 +80,8 @@ export const App: React.FC = () => {
                 variant="contained"
                 color="error"
                 onClick={() => {
-                  setText(encodeLight(inititalState));
-                  setLight(inititalState);
+                  setText(defaultState);
+                  setLight(decodeLight(defaultState));
                 }}
               >
                 Reset
